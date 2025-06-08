@@ -6,174 +6,128 @@
 {% endblock %}
 
 {% block content %}
-<!-- Write content in here -->
-
+<!-- Contenido adaptado para móviles -->
 <div id="temporizador" style="position:absolute; top:10px; right:20px; font-size:16px; color:#444;">
     Tiempo restante del periodo: <span id="timer">25</span>
 </div>
 
-<div class="container-fluid">
+<div class="container p-3">
     <div class="row">
 
-
-        <!-- left side -->
-        <div style="background-color:rgb(240,240,240)" class="col-lg-5">
-
-            <div class="container-fluid mt-5 bm-4" id="noticias-hover">
-                <h2>Noticias</h2>
+        <!-- Noticias y operaciones -->
+        <div class="col-12 col-lg-5 mb-4" style="background-color:rgb(240,240,240); border-radius: 12px; padding: 15px;">
+            <div class="noticia mb-4">
+                <h4>Noticias</h4>
                 <p id="trade_news"></p>
             </div>
-            <!-- Trade buttons -->
-            <div class="container-fluid " id="operaciones-espacio">
-                <h2>Operación</h2>
-                <div class="row">
-                    <div class="col-sm">
-                    <button onclick="buy_shares(this.value)" value="1" id="trade_btn_buy_s" type="button" class="btn btn-primary btn-block">Comprar 1</button>
-                    </div>
-                    <div class="col-sm">
-                    <button onclick="buy_shares(this.value)" value="10" id="trade_btn_buy_m" type="button" class="btn btn-primary btn-block">Comprar 10</button>
-                    </div>
-                    <div class="col-sm">
-                    <button onclick="buy_shares(this.value)" value="20" id="trade_btn_buy_l" type="button" class="btn btn-primary btn-block">Comprar 20</button>
-                    </div>
-                </div>
 
-                <div class="container-fluid">
-                <h4 class="text-center">Precio:</h4>
-                <h1 class="text-center" id="trade_price"></h1>
+            <div class="mb-4">
+                <h4>Operación</h4>
+                <div class="d-flex flex-wrap gap-2 justify-content-between">
+                    <button onclick="buy_shares(this.value)" value="1" id="trade_btn_buy_s" class="btn btn-primary flex-fill m-1">Comprar 1</button>
+                    <button onclick="buy_shares(this.value)" value="10" id="trade_btn_buy_m" class="btn btn-primary flex-fill m-1">Comprar 10</button>
+                    <button onclick="buy_shares(this.value)" value="20" id="trade_btn_buy_l" class="btn btn-primary flex-fill m-1">Comprar 20</button>
+                    <button onclick="sell_shares(this.value)" value="1" id="trade_btn_sell_s" class="btn btn-danger flex-fill m-1">Vender 1</button>
+                    <button onclick="sell_shares(this.value)" value="10" id="trade_btn_sell_m" class="btn btn-danger flex-fill m-1">Vender 10</button>
+                    <button onclick="sell_shares(this.value)" value="20" id="trade_btn_sell_l" class="btn btn-danger flex-fill m-1">Vender 20</button>
                 </div>
-
-                <div class="row">
-                    <div class="col-sm">
-                    <button onclick="sell_shares(this.value)" value="1" id="trade_btn_sell_s" type="button" class="btn btn-danger btn-block">Vender 1</button>
-                    </div>
-                    <div class="col-sm">
-                    <button onclick="sell_shares(this.value)" value="10" id="trade_btn_sell_m" type="button" class="btn btn-danger btn-block">Vender 10</button>
-                    </div>
-                    <div class="col-sm">
-                    <button onclick="sell_shares(this.value)" value="20" id="trade_btn_sell_l" type="button" class="btn btn-danger btn-block">Vender 20</button>
-                    </div>
-                </div>
+                <h5 class="text-center mt-3">Precio actual:</h5>
+                <h2 class="text-center" id="trade_price"></h2>
             </div>
         </div>
 
-        <!-- Parte derecha (solo mercado) -->
-        <div style="background-color:rgb(240,240,240)" class="col-lg-7">
-            <!-- Market chart -->
-            <div class="container">
-                <h2>Mercado</h2>
-                <figure class="highcharts-figure">
-                    <div id="container"></div>
-                </figure>
+        <!-- Gráfico de mercado -->
+        <div class="col-12 col-lg-7" style="background-color:rgb(240,240,240); border-radius: 12px; padding: 15px;">
+            <h4>Mercado</h4>
+            <div style="width: 100%; overflow-x: auto;">
+                <div id="container" style="min-width: 300px; height: 200px;"></div>
             </div>
         </div>
+    </div>
 
-        </div> <!-- cierra la fila (row) de arriba -->
-
-        <!-- Parte inferior (portafolio a ancho completo) -->
-        <div class="row mt-4">
-            <div class="col-12">
-                <div class="container">
-                    <h2>Mi Portafolio</h2>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Efectivo</th>
-                                <th>Acciones</th>
-                                <th>Valor en acciones</th>
-                                <th>Valor del portafolio</th>
-                                <th>Ganancia/Pérdida acumulada</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td id="table_cash"></td>
-                                <td id="table_shares"></td>
-                                <td id="table_share_value"></td>
-                                <td id="table_total"></td>
-                                <td id="table_pandl"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    <!-- Portafolio -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h4>Mi Portafolio</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Efectivo</th>
+                        <th>Acciones</th>
+                        <th>Valor en acciones</th>
+                        <th>Valor del portafolio</th>
+                        <th>Ganancia/Pérdida acumulada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="table_cash"></td>
+                        <td id="table_shares"></td>
+                        <td id="table_share_value"></td>
+                        <td id="table_total"></td>
+                        <td id="table_pandl"></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+    </div>
+</div>
 
 {% next_button %}
-
 {% endblock %}
 
 {% block scripts %}
-<!-- Write scripts in here! -->
-
-<!-- Load javascripts from Content Delivery Network -->
+<!-- Scripts -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
 <script src="https://code.highcharts.com/highcharts.js"></script>
-
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-<!-- Make sure a warning apears when someone tries to refresh or leave the session-->
 <body onkeydown="return (event.keyCode != 116)"></body>
 <body onkeydown="return (event.keyCode != 8)"></body>
 <body onkeydown="return (event.keyCode != 123)"></body>
 <body onkeydown="return (event.keyCode != 154)"></body>
 
-<!-- Load custom javascripts from static files -->
 <script src="{% static "ZTS/chart.js" %}"></script>
 <script src="{% static "ZTS/trade_controller.js" %}"></script>
 
 <script>
-    const refreshRateMs = js_vars.refresh_rate;          // ya es un número
+    const refreshRateMs = js_vars.refresh_rate;
     const refreshRateSec = Math.floor(refreshRateMs / 1000);
     let countdown = refreshRateSec;
-
     const timerDisplay = document.getElementById('timer');
 
     function updateCountdown() {
-    if (countdown > 0) {
-        timerDisplay.textContent = countdown + ' segundos';
-        countdown--;
-    } else {
-        countdown = refreshRateSec;
-        timerDisplay.textContent = countdown + ' segundos';
-        countdown--;
-    }
+        if (countdown > 0) {
+            timerDisplay.textContent = countdown + ' segundos';
+            countdown--;
+        } else {
+            countdown = refreshRateSec;
+            timerDisplay.textContent = countdown + ' segundos';
+            countdown--;
+        }
     }
 
-    // Iniciar de inmediato y luego cada segundo
     updateCountdown();
     setInterval(updateCountdown, 1000);
 </script>
 {% endblock %}
 
 {% block styles %}
-
 <style>
-    
-    /*Revisar si se tiene dudas sobre los estilos: https://www.w3schools.com/cssref/pr_margin-top.php */
-
-    #noticias-hover {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative;         
-        z-index: 1000;              /* superpone a otros elementos  */
+    .noticia {
+        background-color: #f1f1f1;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 16px;
+        line-height: 1.4;
     }
-    #noticias-hover:hover {
-        transform: scale(1.25); /* agranda un 25% */
-        box-shadow: 0 0 15px rgba(0,0,0,0.3); /* sombra suave de la caja de la noticia */
-        z-index: 10;
-        background-color: #ffffff;
+    .gap-2 {
+        gap: 10px !important;
     }
-
-    #operaciones-espacio {
-        margin-top: 10px; /* establece margen superior de un elemento */
-    }
-    
 </style>
-
 {% endblock %}
