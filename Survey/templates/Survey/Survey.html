@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Encuesta Final
+{% endblock %}
+
+{% block content %}
+
+    <p>¡Gracias por participar en el experimento!</p>
+
+    <p><strong>Para recibir tu compensación final, por favor completa la siguiente encuesta.</strong></p>
+
+    <a href="{{ processed_survey_link }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
+        Ir a la Encuesta
+    </a>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Resultados de la Etapa {{subsession.round_number}}/{{session.num_rounds}}
+{% endblock %}
+
+{% block content %}
+
+<!-- Portfolio table -->
+<div class="container">
+    <h2>Mi Portafolio</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Efectivo</th>
+            <th>Acciones</th>
+            <th>Valor en Acciones</th>
+            <th>Valor del </th>
+            <th>Ganancia/Pérdida acumulada</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{cash}}</td>
+            <td>{{shares}}</td>
+            <td>{{share_value}}</td>
+            <td>{{portfolio_value}}</td>
+            <td>{{pandl}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{% if mostrar_compensacion %}
+    <div class="alert alert-success" role="alert" style="font-size: 1.2em;">
+        <strong>Tu compensación total es:</strong>
+        <span style="color:green;">S/ {{ compensacion_total }}</span>
+    </div>
+{% endif %}
+    {% next_button %}
+{% endblock %}
+
+

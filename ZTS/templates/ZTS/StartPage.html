@@ -1,0 +1,160 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instrucciones
+{% endblock %}
+
+{% block content %}
+
+{% if subsession.round_number == 1 %}
+<p style="color:darkred;"><strong>Recomendamos colocar tu celular en posición horizontal</strong> para una mejor experiencia durante el experimento.</p>
+
+<h2>Etapa de Entrenamiento</h2>
+
+<p><strong>Antes de comenzar el juego real, tendrás una etapa de entrenamiento para aprender cómo funciona el sistema.</strong></p>
+
+<ul>
+    <li><strong>Duración: 4 periodos</strong>, cada uno de <strong>25 segundos</strong></li>
+    <li><strong>Portafolio inicial: 100 unidades monetarias experimentales (u.m.e.)</strong>, todo en efectivo</li>
+</ul>
+
+<p><strong>¿Para qué sirve esta etapa?</strong></p>
+<p>Esta etapa es solo una práctica. Te servirá para familiarizarte con los botones, el funcionamiento del mercado y cómo se actualiza tu portafolio.</p>
+<p style="color:darkgreen;"><strong>Lo que ocurra en esta etapa no afecta tu resultado final ni tu recompensa.</strong></p>
+
+<p style="color:darkblue;"><strong>A lo largo de la etapa, recibirás noticias y observarás el precio de un activo.</strong></p>
+
+<h4>¿Qué verás en pantalla?</h4>
+
+<ol style="line-height: 1.7; margin-left: 20px;">
+    <li>
+        <strong>Noticias:</strong>
+        <ul>
+            <li>Una noticia nueva aparecerá en cada periodo</li>
+            <li>Puedes tocar el recuadro para ampliarlo y leer con mayor comodidad</li>
+            <li style="color:darkred;"><strong>Léela siempre</strong></li>
+        </ul>
+    </li>
+    <li>
+        <strong>Mercado:</strong>
+        <ul>
+            <li>Verás cómo ha cambiado el precio en periodos anteriores</li>
+            <li>También verás el precio actual</li>
+            <li style="color:darkred;"><strong>Esto no predice qué pasará después</strong></li>
+        </ul>
+    </li>
+    <li>
+        <strong>Operación:</strong>
+        <ul>
+            <li>Podrás comprar o vender 1, 3 o 5 acciones</li>
+            <li>Puedes hacer varias operaciones en el mismo periodo</li>
+            <li style="color:darkred;"><strong>Ejemplo:</strong> si deseas comprar 2 acciones, puedes presionar "comprar 1" dos veces</li>
+            <li>Solo puedes comprar si tienes efectivo</li>
+            <li>Solo puedes vender si tienes acciones</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Mi portafolio:</strong>
+        <ul>
+            <li><strong>Efectivo:</strong> cantidad disponible</li>
+            <li><strong>Acciones:</strong> número de acciones que posees</li>
+            <li><strong>Valor de acciones</strong> = precio actual × número de acciones</li>
+            <li><strong>Valor total del portafolio</strong> = efectivo + valor de acciones</li>
+            <li><strong>Ganancia o pérdida acumulada</strong> = Valor total del portafolio – 100</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Tiempo restante:</strong> verás un contador que muestra cuánto queda para que termine cada periodo
+    </li>
+</ol>
+
+<p><strong>¿Qué pasará durante el entrenamiento?</strong></p>
+<ul>
+    <li>En cada periodo verás una <strong>noticia diferente</strong> y el <strong>precio</strong> del activo</li>
+    <li>El precio cambiará de forma conocida: empezará en 20, luego <strong>subirá</strong> a 40, <strong>bajará</strong> a 20, volverá a <strong>subir</strong> a 40 y finalmente <strong>bajará</strong> a 20</li>
+</ul>
+
+<p><strong>¿Qué deberías hacer?</strong></p>
+<ul>
+    <li><strong>Comprar</strong> acciones antes de que el precio suba</li>
+    <li><strong>Vender</strong> acciones antes de que el precio baje</li>
+</ul>
+
+<p style="color:darkred;"><strong>Recuerda:</strong> las <strong>noticias</strong> y los <strong>precios</strong> que verás en esta etapa están diseñados solo para practicar. En la etapa real, las condiciones serán diferentes.</p>
+
+<p style="color:darkred;"><strong>Presiona “Siguiente” solo cuando hayas leído todo con atención y estés listo para comenzar el entrenamiento.</strong></p>
+{% else %}
+<p style="color:darkred;"><strong>Recomendamos colocar tu celular en posición horizontal</strong> para una mejor experiencia durante el experimento.</p>
+
+    <h2>Etapa Real</h2>
+
+<p><strong>¡Muy bien! Has completado la etapa de entrenamiento.</strong></p>
+
+<p>Ahora empieza la <strong>etapa real del experimento, donde tus decisiones sí tendrán consecuencias reales</strong>. A partir de este momento, el valor final de tu portafolio determinará cuánto dinero podrás ganar.</p>
+
+<h4>¿Qué cambia en esta etapa?</h4>
+<ul>
+    <li><strong>Todas tus decisiones contarán para calcular tu compensación final</strong></li>
+    <li>El valor de tu portafolio al final del juego definirá tu ganancia adicional</li>
+    <li>La etapa tendrá <strong>20 periodos</strong></li>
+    <li>Tu portafolio comenzará con <strong>1000 unidades monetarias experimentales (u.m.e.)</strong>, todo en efectivo</li>
+    <li>Las <strong>noticias serán diferentes</strong> a los del entrenamiento</li>
+    <li>Los <strong>precios del activo también serán distintos</strong></li>
+</ul>
+
+<h4>¿Qué se mantiene igual?</h4>
+<ul>
+    <li>La interfaz del experimento seguirá funcionando igual que en la práctica</li>
+    <li>Podrás comprar o vender 1, 3 o 5 acciones por operación</li>
+    <li>Cada periodo de <strong>25 segundos</strong></li>
+    <li>Podrás realizar varias operaciones en cada periodo</li>
+    <li>Recuerda: solo puedes comprar si tienes efectivo y solo puedes vender si tienes acciones</li>
+</ul>
+
+<h4>¿Qué debes hacer?</h4>
+<ul>
+    <li>Si crees que el precio <u>subirá</u>, <strong>comprar</strong> acciones</li>
+    <li>Si crees que el precio <u>bajará</u>, <strong>vender</strong> tus acciones</li>
+    <li>Si no estás seguro, puedes <strong>no hacer nada</strong></li>
+    <li><strong>No es necesario usar todo tu efectivo ni vender todas tus acciones en un solo periodo. Puedes tomar decisiones parciales: comprar solo una parte, vender una parte, o simplemente observar.</strong></li>
+</ul>
+
+<p style="color:darkblue;"><strong>Es importante que estés atento a todo lo que ocurre en pantalla en cada periodo.</strong></p>
+
+<p><strong>Actúa como si estuvieras usando tu propio dinero. Realizar decisiones que harías en la realidad es fundamental para nosotros.</strong></p>
+
+<h4>Compensación final</h4>
+
+<p>Al finalizar el experimento, se calculará tu ganancia con base en el valor de tu portafolio. Ese resultado se convertirá en dinero real.</p>
+
+<ul>
+    <li><strong>Monto fijo:</strong> S/ 5.00 (lo recibes independientemente de tu resultado)</li>
+    <li><strong>Ganancia adicional:</strong> si terminas con más de 1000 u.m.e., ganarás un monto extra</li>
+    <li><strong>Tasa de cambio:</strong> por cada unidad por encima de 1000, ganarás S/ 0.1</li>
+</ul>
+
+<p><strong>Fórmula de compensación:</strong><br>
+Compensación total = S/ 5.00 + (ganancia en u.m.e. × 0.1)</p>
+
+<p>Si terminas con menos de 1000 u.m.e., recibirás únicamente los S/ 5.00 del monto fijo.</p>
+
+<h4>Consejos para esta etapa</h4>
+<ul>
+    <li>Observa <strong>siempre</strong> la noticia de cada periodo.</li>
+    <li>No confíes que el precio seguirá igual</li>
+    <li>Recuerda que ahora estás jugando por una recompensa real: actúa con atención, estrategia y sinceridad</li>
+</ul>
+
+<p style="color:darkred;"><strong>Recuerda:</strong><br>
+Cada acción que tomes afectará directamente tu resultado final. Esta etapa es el corazón del experimento. Mantente concentrado y toma tus decisiones con cuidado.</p>
+
+<p style="color:darkred;"><strong>Presiona “Siguiente” solo cuando hayas leído todo con atención y estés listo para comenzar la etapa real.</strong></p>
+
+
+{% endif %}
+
+<br>
+{% next_button %}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+<h2>¡Bienvenido(a) al experimento!</h2>
+{% endblock %}
+
+{% block content %}
+<p>Gracias por participar en este experimento controlado presencial.</p>
+
+<p>En este estudio asumirás el rol de un inversionista en un mercado financiero.</p>
+
+<p>A lo largo del experimento, recibirás <strong>noticias</strong> y observarás el precio de un activo. 
+Con esa información, deberás decidir si <strong>comprar, vender o mantener</strong> tus acciones.</p>
+
+<p><strong>Debes aumentar el valor de tu portafolio.</strong> </p>
+
+<p>Primero realizarás una etapa de entrenamiento. Luego, participarás en la etapa real que definirá tu compensación final.</p>
+
+<p style="color:darkred;"><strong>Presiona “Siguiente” para continuar.</strong></p>
+
+{% next_button %}
+{% endblock %}
