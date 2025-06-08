@@ -36,15 +36,15 @@ Function that simulates a day in the market:
     - updates portfolio table
 ------------------------------------------------------------------*/
 
-window.addEventListener('DOMContentLoaded', function () {
-    set_buy_sell_amounts();
-    var chart = init_chart(prices.slice(0, parseInt(localStorage.cur_day) + 1));
-    update_y_axis(y);
+// setup and first iteration
+set_buy_sell_amounts();
+var chart = init_chart(prices.slice(0, parseInt(localStorage.cur_day) + 1));
+update_y_axis(y);
 
-    $_('trade_price').innerHTML = prices[parseInt(localStorage.cur_day)].toFixed(2);
-    $_('trade_news').innerHTML = news[parseInt(localStorage.cur_day)];
-    update_portfolio();
-});
+// 🔥 Esto es lo nuevo
+$_('trade_price').innerHTML = prices[parseInt(localStorage.cur_day)].toFixed(2);
+$_('trade_news').innerHTML = news[parseInt(localStorage.cur_day)];
+update_portfolio();
 
 if (!restore) {
     liveSend(get_trade_report('Start', prices[0], 0));
